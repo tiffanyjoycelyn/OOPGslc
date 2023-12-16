@@ -1,5 +1,6 @@
 package main;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import connection.Connection;
 import repo.UserRepository;
@@ -7,10 +8,16 @@ import repo.TeamRepository;
 
 public class menuShow {
 	public static void menuSho(Scanner ns, Connection conn) {
-		System.out.println("Which table to show? 1. User, 2.Team. ");
-		int inputTable =  ns.nextInt();
-		System.out.println("Want to filter by condition? 1. Yes, 2. No. ");
-		int inputCondition = ns.nextInt();
+		Scanner sc = new Scanner(System.in);
+		int inputTable = 0 ; int inputCondition = 0;
+		do {
+			System.out.println("Which table to show? 1. User, 2.Team. ");
+			inputTable = ns.nextInt();
+		} while(inputTable>2 || inputTable<1);
+		do {
+			System.out.println("Want to filter by condition? 1. Yes, 2. No. ");
+			inputCondition = ns.nextInt();
+		} while (inputCondition>2 || inputCondition<1);
 		
 		
 		if(inputCondition == 2) {
@@ -33,7 +40,7 @@ public class menuShow {
 		}else if(inputCondition ==1) {
 			System.out.println("add condition, separate by semicolon. ");
 			System.out.println("Example : name;=;kevin");
-			String condition = ns.next();ns.nextLine();
+			String condition = sc.nextLine();
 			String [] str = condition.split(";", 3);
 			
 			// index list

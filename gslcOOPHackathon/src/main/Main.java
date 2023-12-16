@@ -12,7 +12,11 @@ public class Main {
     public static void main(String[] args) {
         Connection conn = Connection.getConnectionInstance();
         Menu.mainMenu(conn);
-
+        
+//        TeamRepository tr = new TeamRepository();
+//        
+//        tr.find("yoyoyoyo");
+        
     
     }
 }

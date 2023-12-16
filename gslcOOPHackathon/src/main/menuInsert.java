@@ -1,5 +1,5 @@
 package main;
-
+import java.util.Scanner;
 import java.nio.file.FileSystemNotFoundException;
 import java.util.List;
 import java.util.Scanner;
@@ -10,6 +10,9 @@ import repo.TeamRepository;
 
 public class menuInsert {
 	protected static void menuIns (Scanner ns, Connection conn) {
+		
+		Scanner sc = new Scanner(System.in);
+		
 		int inputTable = 0;
  		do {
  			System.out.println("Which table to insert? 1. User, 2. Team.");
@@ -23,11 +26,11 @@ public class menuInsert {
 		
 		if(inputTable == 1) {
 			System.out.print("add name: ");
-			name = ns.next();ns.nextLine();
+			name = sc.nextLine();
 			System.out.print("add nim: ");
 			nim = ns.next();ns.nextLine();
 			System.out.print("add team: ");
-			team = ns.next();ns.nextLine();
+			team = sc.nextLine();
 			
 			if(checkTeamName(conn, team) == false) {
 				System.out.println("\nERROR:  No team named " + team + " in the lists");
@@ -56,12 +59,12 @@ public class menuInsert {
 			
 		}else {
 			System.out.println("add name: ");
-			team = ns.next();ns.nextLine();
+			team = sc.nextLine();
+			System.out.println(team);
 			Integer id = checkLastID(conn);
 			
+			
 			String param = Integer.toString(id)+ ","+ team;
-//			System.out.println(param);
-//			System.out.println(id);
 			try {
 				TeamRepository teamRepository = new TeamRepository();
 				teamRepository.insert(param);

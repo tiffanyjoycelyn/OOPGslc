@@ -78,6 +78,7 @@ public class UserRepository implements Repository{
 		System.out.println("error...");
 	}else {
 		int i = 0; int indexDataFound = 0;
+		int flagfound = 0;
 		if((columnName.toLowerCase()).contentEquals("name")) {
 			if(joinTableBoolean) {
 				int x = 0;
@@ -87,12 +88,17 @@ public class UserRepository implements Repository{
 			    	for(String rowValue : row){
 			    		if(x == 1  && rowValue.contentEquals(columnFilterString)) {
 			    			indexDataFound = j;
+			    			flagfound = 1;
 			            }
 			            x++;
 			       }
 			       x = 0; j++;
 			    }
 				
+			}
+			if(flagfound == 0) {
+				System.out.println("sorry " + columnName+" "+columnFiltercondition+" "+columnFilterString + " does not exist.");
+				return;
 			}
 			
 			for(String[] row : readUser){
@@ -148,6 +154,7 @@ public class UserRepository implements Repository{
 	            }
 	            i = 0;
 	        }	
+			
 		}else if((columnName.toLowerCase().contentEquals("nim"))) {
 			
 			if(joinTableBoolean) {
@@ -158,12 +165,17 @@ public class UserRepository implements Repository{
 			    	for(String rowValue : row){
 			    		if(x == 0  && rowValue.contentEquals(columnFilterString)) {
 			    			indexDataFound = j;
+			    			flagfound = 1;
 			            }
 			            x++;
 			       }
 			       x = 0; j++;
 			    }
 				
+			}
+			if(flagfound == 0) {
+				System.out.println("sorry " + columnName+" "+columnFiltercondition+" "+columnFilterString + " does not exist.");
+				return;
 			}
 			
 			for(String[] row : readUser){
@@ -229,6 +241,7 @@ public class UserRepository implements Repository{
 			    	for(String rowValue : row){
 			    		if(x == 2  && rowValue.contentEquals(columnFilterString)) {
 			    			indexDataFound = j;
+			    			flagfound = 1;
 			            }
 			            x++;
 			       }
@@ -236,7 +249,10 @@ public class UserRepository implements Repository{
 			    }
 				
 			}
-			
+			if(flagfound == 0) {
+				System.out.println("sorry " + columnName+" "+columnFiltercondition+" "+columnFilterString + " does not exist.");
+				return;
+			}
 			for(String[] row : readUser){
 	            for(String rowValue : row){
 	            	if(i == 2) { // i untuk cek column mana
@@ -290,6 +306,9 @@ public class UserRepository implements Repository{
 	            }
 	            i = 0;
 	        }	
+			if(flagfound == 0) {
+				System.out.println("sorry " + columnName+" "+columnFiltercondition+" "+columnFilterString + " does not exist.");
+			}
 	}
 }
 	}

@@ -1,3 +1,6 @@
+Case : https://drive.google.com/file/d/1rxu0B4F920ypUwsccSknylHl9IuRUjkc/view?usp=sharing
+
+
 # OOPGslc
 
 tugas oop gslc
